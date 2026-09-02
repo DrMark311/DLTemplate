@@ -182,3 +182,24 @@ cython_debug/
 
 .DS_Store
 **/.DS_Store
+# =========================
+# Deep Learning & PyTorch Rules
+# =========================
+
+# Ignore data and checkpoints contents but keep the directories
+data/*
+!data/.gitkeep
+checkpoints/*
+!checkpoints/.gitkeep
+
+# Ignore weights, models and tensorboard logs
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+runs/
+lightning_logs/
+
+# Notebooks checkpoints
+.ipynb_checkpoints/

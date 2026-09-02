@@ -30,3 +30,14 @@ torch = [
 torchvision = [
   { index = "pytorch-cu", marker = "sys_platform == 'win32'" },
 ]
+
+[tool.ruff.lint]
+# F401 is "unused-import".
+# 'unfixable' keeps the warning so you know it's unused, but prevents Ruff from deleting it.
+unfixable = ["F401"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.5",
+]
