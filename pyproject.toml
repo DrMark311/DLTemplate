@@ -1,0 +1,20 @@
+[project]
+name = "pytorchonmac"
+version = "0.1.0"
+description = "This project is to testing PyTorch on Macbook Air M1"
+readme = "README.md"
+authors = [
+    { name = "Marco Polo Pineda Ortelli", email = "mpineda.ds@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=2.13.0",
+    "torchvision>=0.28.0",
+]
+
+[project.scripts]
+pytorchonmac = "pytorchonmac:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
