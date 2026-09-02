@@ -185,6 +185,7 @@ dependencies = [
     { name = "numpy" },
     { name = "pandas" },
     { name = "scikit-learn" },
+    { name = "seaborn" },
     { name = "torch", version = "2.13.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform != 'win32'" },
     { name = "torch", version = "2.14.0+cu132", source = { registry = "https://download.pytorch.org/whl/cu132" }, marker = "sys_platform == 'win32'" },
     { name = "torchinfo" },
@@ -205,6 +206,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.5.0" },
     { name = "pandas", specifier = ">=3.0.0" },
     { name = "scikit-learn", specifier = ">=1.9.0" },
+    { name = "seaborn", specifier = ">=0.13.2" },
     { name = "torch", marker = "sys_platform != 'win32'", specifier = ">=2.13.0" },
     { name = "torch", marker = "sys_platform == 'win32'", specifier = ">=2.13.0", index = "https://download.pytorch.org/whl/cu132" },
     { name = "torchinfo", specifier = ">=1.8.0" },
@@ -1123,6 +1125,20 @@ wheels = [
 ]
 
 [[package]]
+name = "seaborn"
+version = "0.13.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "numpy" },
+    { name = "pandas" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/86/59/a451d7420a77ab0b98f7affa3a1d78a313d2f7281a57afb1a34bae8ab412/seaborn-0.13.2.tar.gz", hash = "sha256:93e60a40988f4d65e9f4885df477e2fdaff6b73a9ded434c1ab356dd57eefff7", size = 1457696, upload-time = "2024-01-25T13:21:52.551Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/83/11/00d3c3dfc25ad54e731d91449895a79e4bf2384dc3ac01809010ba88f6d5/seaborn-0.13.2-py3-none-any.whl", hash = "sha256:636f8336facf092165e27924f223d3c62ca560b1f2bb5dff7ab7fad265361987", size = 294914, upload-time = "2024-01-25T13:21:49.598Z" },
+]
+
+[[package]]
 name = "setuptools"
 version = "84.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1218,12 +1234,12 @@ dependencies = [
     { name = "typing-extensions" },
 ]
 wheels = [
-    { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp312-cp312-win_amd64.whl", upload-time = "2026-09-01T19:26:05Z" },
-    { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp313-cp313-win_amd64.whl", upload-time = "2026-09-01T19:27:27Z" },
-    { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp314-cp314-win_amd64.whl", upload-time = "2026-09-01T19:28:46Z" },
-    { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp314-cp314t-win_amd64.whl", upload-time = "2026-09-01T19:29:52Z" },
-    { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp315-cp315-win_amd64.whl", upload-time = "2026-09-01T19:31:10Z" },
-    { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp315-cp315t-win_amd64.whl", upload-time = "2026-09-01T19:32:36Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp312-cp312-win_amd64.whl", hash = "sha256:c7883d0c3426136dce06aabbb7f6924c15ffa0aa79e2d2a3d9bdcd84bbccd54c", upload-time = "2026-09-02T19:03:47Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp313-cp313-win_amd64.whl", hash = "sha256:3a7224b43f44c8438f7d3d6c268c816b2113efa73ffe473196e82e2e98bce4aa", upload-time = "2026-09-02T19:05:29Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp314-cp314-win_amd64.whl", hash = "sha256:9b160a54e7eb62ec3ab65ae4c13289be36d2e5e024a0bd078475791b88b2ad6b", upload-time = "2026-09-02T19:07:05Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp314-cp314t-win_amd64.whl", hash = "sha256:14e3f4397510e4fd3313eb38eb977c91d859b6be9d0b18b016baeb3c24a013c4", upload-time = "2026-09-02T19:08:41Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp315-cp315-win_amd64.whl", hash = "sha256:cbeb1cf919c5234dbc39c7588d29352d79830f8dffc570835cdf4889b81c069f", upload-time = "2026-09-02T19:10:31Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu132/torch-2.14.0%2Bcu132-cp315-cp315t-win_amd64.whl", hash = "sha256:df799914f36949451d54c79e3ced2e45dd951d0f9df189c0414cc56914d08554", upload-time = "2026-09-02T19:12:08Z" },
 ]
 
 [[package]]
