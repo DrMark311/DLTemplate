@@ -1,3 +1,6 @@
+> [!WARNING]
+> **Esta es una plantilla.** Por favor, crea un nuevo repositorio a partir de ella para tu proyecto. **No modifiques este repositorio de plantilla directamente.**
+
 # 🚀 PyTorch Multiplatform Deep Learning Template
 
 Plantilla profesional y robusta para proyectos de Inteligencia Artificial, Visión Computacional y Deep Learning. Diseñada para funcionar "Out of the box" con aceleración por hardware tanto en **Windows (NVIDIA CUDA 13.2)** como en **macOS (Apple Silicon MPS)**.
