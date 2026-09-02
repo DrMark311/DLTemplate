@@ -91,7 +91,7 @@ nvtx = [
 ]
 
 [[package]]
-name = "dl"
+name = "dl-project"
 version = "1.0.0"
 source = { editable = "." }
 dependencies = [
