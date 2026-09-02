@@ -36,13 +36,14 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 1. **Clona el repositorio** en tu computadora local:
    ```bash
    git clone <url-de-tu-repositorio>
-   cd PyTorchOnMac
+   cd <nombre-de-tu-repo>
    ```
-2. **Sincroniza el entorno y las dependencias:**
+2. **Inicializa y configura tu proyecto automáticamente:**
+   Ejecuta el script de configuración incluido. Este script te preguntará el nombre de tu proyecto, actualizará los archivos necesarios y creará el entorno virtual.
    ```bash
-   uv sync
+   uv run init.py
    ```
-   *Magia pura:* Si estás en Windows, `uv` descargará automáticamente la versión de PyTorch con **CUDA 13.2**. Si estás en Mac, descargará la versión nativa con soporte para **MPS**.
+   Si estás en Windows, `uv` descargará automáticamente la versión de PyTorch con **CUDA 13.2**. Si estás en Mac, descargará la versión nativa con soporte para **MPS**.
 3. **Verifica que el hardware se detecte correctamente:**
    ```bash
    uv run run_model
@@ -55,7 +56,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 Esta plantilla sigue las mejores prácticas arquitectónicas para Deep Learning. El repositorio está diseñado para que **nunca subas datos pesados por accidente a GitHub**, gracias a un estricto blindaje en el `.gitignore`.
 
 ```text
-PyTorchOnMac/
+<nombre-de-tu-repo>/
 │
 ├── 📂 data/               <- 🛑 IGNORADO POR GIT.
 │   │                         Pon aquí tus datasets, imágenes, CSVs o bases de datos en crudo.
