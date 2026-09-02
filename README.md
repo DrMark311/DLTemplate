@@ -3,13 +3,13 @@
 
 # 🚀 PyTorch Multiplatform Deep Learning Template
 
-Plantilla profesional y robusta para proyectos de Inteligencia Artificial, Visión Computacional y Deep Learning. Diseñada para funcionar "Out of the box" con aceleración por hardware tanto en **Windows (NVIDIA CUDA 13.2)** como en **macOS (Apple Silicon MPS)**.
+Plantilla profesional y robusta para proyectos de Inteligencia Artificial, Visión Computacional y Deep Learning. Compatibilidad con **Windows (NVIDIA CUDA 13.2)** como en **macOS (Apple Silicon MPS)**.
 
 ---
 
 ## 📦 1. Requisitos Previos (Instalación)
 
-Para garantizar un entorno reproducible, este proyecto utiliza [**uv**](https://docs.astral.sh/uv/) (el gestor de paquetes de Python ultra-rápido escrito en Rust) en lugar de `pip` o `conda`.
+Para garantizar un entorno reproducible, este proyecto utiliza [**uv**](https://docs.astral.sh/uv/) (el gestor de paquetes de Python ultra-rápido escrito en Rust)
 
 ### A. Instalar Git y GitHub Desktop
 1. Descarga e instala [Git](https://git-scm.com/downloads).
@@ -38,12 +38,18 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
    git clone <url-de-tu-repositorio>
    cd <nombre-del-repo>
    ```
-2. **Inicializa y configura tu proyecto automáticamente:**
-   Ejecuta el script de configuración incluido. Este script te preguntará el nombre de tu proyecto, actualizará los archivos necesarios y creará el entorno virtual.
+2. **Inicializa y configura tu proyecto (SOLO LA PRIMERA VEZ):**
+   Ejecuta el script de configuración incluido. Este script te preguntará el nombre de tu proyecto, preparará todo y **se auto-eliminará** al terminar.
    ```bash
    uv run init.py
    ```
-   Si estás en Windows, `uv` descargará automáticamente la versión de PyTorch con **CUDA 13.2**. Si estás en Mac, descargará la versión nativa con soporte para **MPS**.
+   > 💡 **¡ATENCIÓN! Futuras clonaciones:** 
+   > Una vez inicializado, el archivo `init.py` dejará de existir. Si otro desarrollador clona tu repositorio, o si tú necesitas actualizar las dependencias más adelante, **simplemente debes correr:**
+   > ```bash
+   > uv sync
+   > ```
+   
+   Durante este proceso, si estás en Windows, `uv` descargará automáticamente la versión de PyTorch con **CUDA 13.2**. Si estás en Mac, descargará la versión nativa con soporte para **MPS**.
 3. **Verifica que el hardware se detecte correctamente:**
    ```bash
    uv run run_model
@@ -53,7 +59,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 
 ## 📁 3. Estructura del Proyecto
 
-Esta plantilla sigue las mejores prácticas arquitectónicas para Deep Learning. El repositorio está diseñado para que **nunca subas datos pesados por accidente a GitHub**, gracias a un estricto blindaje en el `.gitignore`.
+Esta plantilla sigue las mejores prácticas arquitectónicas para Deep Learning. El repositorio está diseñado para que **nunca subas datos pesados por accidente a GitHub**, siempre y cuando pongas cada archivo en las carpetas correspondientes.
 
 ```text
 <nombre-del-repo>/
@@ -95,5 +101,55 @@ Si usas **Visual Studio Code**, el proyecto ya viene pre-configurado para ti.
 1. Al abrir la carpeta en VSCode, dale click en **"Instalar extensiones recomendadas"** (Python, Pylance, Ruff).
 2. El editor detectará el entorno virtual (`.venv`) automáticamente.
 3. El código se formateará de manera automática (`formatOnSave`) y respetará el mantenimiento de tus librerías gracias a la configuración de `settings.json`.
+
+---
+
+## � 5. Librerías Incluidas por Defecto
+
+Esta plantilla viene lista para producción del ecosistema de Deep Learning preinstalado en sus versiones más modernas y estables:
+
+- 🔥 **PyTorch (`torch`, `torchvision`)**: El motor principal con aceleración GPU garantizada (NVIDIA CUDA / Apple MPS).
+- 🧮 **Numpy & Pandas**: Para cálculos matriciales y manipulación de datasets tabulares.
+- 📊 **Matplotlib**: Para graficar imágenes, métricas y curvas de aprendizaje (Loss/Accuracy).
+- 🧠 **Scikit-learn**: Herramientas analíticas y métricas clásicas de Machine Learning.
+- ⏳ **Tqdm**: Para renderizar barras de progreso elegantes en la consola durante tus entrenamientos.
+- 🏗️ **Torchinfo**: Para imprimir resúmenes arquitectónicos detallados (capas, tensores y parámetros) de tus redes neuronales.
+- 🛠️ **Dev Tools (`pytest`, `ruff`)**: Infraestructura para correr pruebas unitarias y mantener tu código formateado impecablemente.
+
+---
+
+## 📋 6. Comandos Útiles (`uv` Cheatsheet)
+
+Como este proyecto usa `uv` en lugar de `pip` convencional, aquí tienes los comandos que más vas a usar en tu día a día para gestionar tus librerías:
+
+### ➕ Agregar librerías manualmente
+Si necesitas una nueva librería (ej. `seaborn`), no edites el archivo `pyproject.toml` a mano. Usa:
+```bash
+uv add seaborn
+```
+*Esto la descarga, actualiza el `pyproject.toml` y sincroniza el entorno virtual automáticamente.*
+
+### 🔍 Revisar qué tienes instalado
+Para ver una lista de todas las librerías instaladas y sus versiones actuales:
+```bash
+uv pip list
+```
+*(Tip Pro: Si quieres ver cómo dependen unas librerías de otras en forma de árbol, usa `uv pip tree`)*.
+
+### 🔄 Actualizar versiones
+Si pasaron meses y quieres que `uv` busque las versiones más nuevas de todas tus librerías respetando los límites del `pyproject.toml`:
+```bash
+uv lock --upgrade
+uv sync
+```
+*Si solo quieres actualizar una en específico (ej. PyTorch):* `uv add torch --upgrade`
+
+### 🚀 Correr cualquier script
+Siempre procura correr tus scripts de Python a través de `uv` para que inyecte el entorno virtual automáticamente sin que tengas que activarlo manualmente:
+```bash
+uv run main.py
+```
+
+---
 
 ¡Feliz entrenamiento! 🧠🔥
