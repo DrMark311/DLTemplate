@@ -56,9 +56,7 @@ def main():
     try:
         subprocess.run(["uv", "sync"], check=True)
         print("\n🎉 Environment setup complete! Your VS Code is ready to go.")
-        print(
-            "💡 You can now safely delete this 'init_project.py' file and start coding."
-        )
+        print("💡 You can now safely delete this 'init.py' file and start coding.")
     except subprocess.CalledProcessError:
         print("\n❌ Error: 'uv sync' failed. Check the error logs above.")
         sys.exit(1)

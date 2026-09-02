@@ -1,2 +1,7 @@
+from .check_gpu import GPUDeviceChecker
+
+
 def main() -> None:
-    print("Hello from pytorchonmac!")
+    checker = GPUDeviceChecker()
+    checker.detect_device()
+    checker.run_test_tensor()

@@ -36,7 +36,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 1. **Clona el repositorio** en tu computadora local:
    ```bash
    git clone <url-de-tu-repositorio>
-   cd <nombre-de-tu-repo>
+   cd <nombre-del-repo>
    ```
 2. **Inicializa y configura tu proyecto automáticamente:**
    Ejecuta el script de configuración incluido. Este script te preguntará el nombre de tu proyecto, actualizará los archivos necesarios y creará el entorno virtual.
@@ -56,7 +56,9 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 Esta plantilla sigue las mejores prácticas arquitectónicas para Deep Learning. El repositorio está diseñado para que **nunca subas datos pesados por accidente a GitHub**, gracias a un estricto blindaje en el `.gitignore`.
 
 ```text
-<nombre-de-tu-repo>/
+<nombre-del-repo>/
+│
+├── 📄 main.py             <- 🚀 PUNTO DE ENTRADA. Escribe aquí tu programa principal.
 │
 ├── 📂 data/               <- 🛑 IGNORADO POR GIT.
 │   │                         Pon aquí tus datasets, imágenes, CSVs o bases de datos en crudo.
@@ -70,11 +72,15 @@ Esta plantilla sigue las mejores prácticas arquitectónicas para Deep Learning.
 │   │                         Ideal para visualizar gráficas, probar transformaciones o 
 │   │                         hacer prototipos rápidos antes de pasarlos a producción.
 │   
-├── 📂 src/core/           <- 💻 CÓDIGO FUENTE DE PRODUCCIÓN.
-│   │                         Aquí vive el código del proyecto estructurado en POO (Orientado a Objetos).
+├── 📂 src/core/           <- 💻 MÓDULOS Y LIBRERÍAS.
+│   │                         Aquí van los códigos, clases y funciones (como chequeo de GPU,
+│   │                         arquitectura del modelo, etc.) que hacen funcionar a main.py.
 │   │
 │   ├── check_gpu.py       <- Clase global para inicializar y auto-detectar el dispositivo (MPS/CUDA/CPU).
 │   └── __init__.py        
+│
+├── 📂 tests/              <- 🧪 PRUEBAS UNITARIAS (Pytest).
+│   │                         Asegura que tu código funcione y no se rompa al escalarlo.
 │
 ├── 📄 AGENTS.md           <- Reglas, estilo de código y directrices de IA para agentes automatizados.
 ├── 📄 pyproject.toml      <- Configuración maestra del proyecto, dependencias y reglas de linter (Ruff).
