@@ -1,4 +1,4 @@
-# Programa principal
+# main program
 
 
 def main():
