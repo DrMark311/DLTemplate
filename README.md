@@ -42,7 +42,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
    *Magia pura:* Si estás en Windows, `uv` descargará automáticamente la versión de PyTorch con **CUDA 13.2**. Si estás en Mac, descargará la versión nativa con soporte para **MPS**.
 3. **Verifica que el hardware se detecte correctamente:**
    ```bash
-   uv run python src/pytorchonmac/check_gpu.py
+   uv run run_model
    ```
 
 ---
@@ -66,7 +66,7 @@ PyTorchOnMac/
 │   │                         Ideal para visualizar gráficas, probar transformaciones o 
 │   │                         hacer prototipos rápidos antes de pasarlos a producción.
 │   
-├── 📂 src/pytorchonmac/   <- 💻 CÓDIGO FUENTE DE PRODUCCIÓN.
+├── 📂 src/core/           <- 💻 CÓDIGO FUENTE DE PRODUCCIÓN.
 │   │                         Aquí vive el código del proyecto estructurado en POO (Orientado a Objetos).
 │   │
 │   ├── check_gpu.py       <- Clase global para inicializar y auto-detectar el dispositivo (MPS/CUDA/CPU).
