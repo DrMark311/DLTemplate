@@ -1,6 +1,5 @@
 import os
 import re
-import shutil
 import subprocess
 import sys
 
@@ -43,18 +42,32 @@ def main():
 
     print("✅ pyproject.toml updated successfully!")
 
-    # If the user ran this script using 'uv run', uv created a temporary .venv with the old name.
-    # We delete it here so 'uv sync' can recreate it cleanly with the new correct name.
-    if os.path.exists(".venv"):
-        print("🧹 Cleaning up old virtual environment...")
-        try:
-            shutil.rmtree(".venv")
-        except PermissionError:
-            print("⚠️ Warning: Could not delete .venv automatically (might be in use).")
-
     print("\n📦 Running 'uv sync' to build your fresh environment...")
     try:
         subprocess.run(["uv", "sync"], check=True)
+
+        # uv normalizes the project name to lowercase when creating the venv.
+        # We update the prompt name in pyvenv.cfg here to preserve the exact casing the user provided.
+        pyvenv_path = os.path.join(".venv", "pyvenv.cfg")
+        if os.path.exists(pyvenv_path):
+            try:
+                with open(pyvenv_path, "r", encoding="utf-8") as f:
+                    cfg_content = f.read()
+
+                cfg_content = re.sub(
+                    r"^prompt\s*=.*$",
+                    f"prompt = {project_name}",
+                    cfg_content,
+                    flags=re.MULTILINE,
+                )
+
+                with open(pyvenv_path, "w", encoding="utf-8") as f:
+                    f.write(cfg_content)
+            except OSError as e:
+                print(
+                    f"⚠️ Warning: Could not update pyvenv.cfg prompt automatically: {e}"
+                )
+
         print("\n🎉 Environment setup complete! Your VS Code is ready to go.")
         print("💡 You can now safely delete this 'init.py' file and start coding.")
     except subprocess.CalledProcessError:
