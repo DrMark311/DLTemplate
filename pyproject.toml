@@ -1,5 +1,5 @@
 [project]
-name = "DL"
+name = "DL_Project"
 version = "1.0.0"
 description = "A multi-platform PyTorch Deep Learning Template"
 readme = "README.md"

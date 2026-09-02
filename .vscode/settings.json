@@ -1,5 +1,9 @@
 {
-    "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+    "ruff.importStrategy": "fromEnvironment",
+    "ruff.path": [
+        "${workspaceFolder}/.venv/Scripts/ruff.exe",
+        "${workspaceFolder}/.venv/bin/ruff"
+    ],
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff",
         "editor.formatOnSave": true,
