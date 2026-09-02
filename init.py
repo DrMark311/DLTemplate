@@ -3,6 +3,13 @@ import re
 import subprocess
 import sys
 
+# Force UTF-8 encoding for standard output to avoid UnicodeEncodeError on Windows
+if sys.stdout and hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")  # type: ignore
+    except OSError:
+        pass
+
 
 def main():
     print("\n🚀 Welcome to the PyTorch Multiplatform Deep Learning Template!")
