@@ -69,5 +69,3 @@ Si necesitas que tu proyecto corra con otra versión de Python (por ejemplo, baj
 1. **Consulta las versiones disponibles** ejecutando: `uv python list`
 2. **Abre el archivo** `.python-version` y cambia el número a la versión exacta que deseas (ej. `3.11`).
 3. **Sincroniza el entorno:** Vuelve a ejecutar `uv sync`.
-
-> `uv` se encargará de descargar esa versión de Python automáticamente (si no la tienes) y recreará tu entorno `.venv` utilizando la nueva versión, todo de forma transparente.
