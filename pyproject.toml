@@ -1,26 +1,25 @@
 [project]
-name = "DL_Project"
+name = "dl-project" # Modify to use project name
 version = "1.0.0"
 description = "A multi-platform PyTorch Deep Learning Template"
 readme = "README.md"
 authors = [
     { name = "Marco Polo Pineda Ortelli", email = "mpineda.ds@gmail.com" }
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 dependencies = [
-    "torch>=2.13.0",
-    "torchvision>=0.28.0",
-    "numpy>=2.5.0",
-    "matplotlib>=3.11.0",
-    "tqdm>=4.70.0",
-    "pandas>=3.0.0",
-    "scikit-learn>=1.9.0",
-    "torchinfo>=1.8.0",
-    "seaborn>=0.13.2",
+    "torch",
+    "torchvision",
+    "numpy",
+    "matplotlib",
+    "tqdm",
+    "pandas",
+    "scikit-learn",
+    "torchinfo",
+    "seaborn",
 ]
 
-[project.scripts]
-run_model = "core:main"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
@@ -47,6 +46,6 @@ unfixable = ["F401"]
 
 [dependency-groups]
 dev = [
-    "pytest>=9.1.1",
-    "ruff>=0.16.5",
+    "pytest",
+    "ruff",
 ]

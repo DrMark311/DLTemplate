@@ -1,22 +1,15 @@
 > [!WARNING]
-> **Esta es una plantilla.** Por favor, crea un nuevo repositorio a partir de ella para tu proyecto. **No modifiques este repositorio de plantilla directamente.**
+> **Esta es una plantilla.** Por favor, crea un nuevo repositorio a partir de ella para tu proyecto.
 
-# 🚀 PyTorch Multiplatform Deep Learning Template
+# 🚀 PyTorch Deep Learning Template
 
-Plantilla profesional y robusta para proyectos de Inteligencia Artificial, Visión Computacional y Deep Learning. Compatibilidad con **Windows (NVIDIA CUDA 13.2)** como en **macOS (Apple Silicon MPS)**.
+Plantilla profesional para Inteligencia Artificial y Deep Learning. Compatible con **Windows (CUDA)** y **macOS (Apple Silicon MPS)**.
 
 ---
 
-## 📦 1. Requisitos Previos (Instalación)
+## 📦 1. Requisitos Previos
 
-Para garantizar un entorno reproducible, este proyecto utiliza [**uv**](https://docs.astral.sh/uv/) (el gestor de paquetes de Python ultra-rápido escrito en Rust)
-
-### A. Instalar Git y GitHub Desktop
-1. Descarga e instala [Git](https://git-scm.com/downloads).
-2. (Opcional pero recomendado) Descarga [GitHub Desktop](https://desktop.github.com/) para manejar los repositorios de forma visual.
-
-### B. Instalar `uv`
-Ejecuta el siguiente comando en tu terminal dependiendo de tu sistema operativo:
+Necesitas instalar [**uv**](https://docs.astral.sh/uv/), el gestor ultrarrápido de paquetes en Python:
 
 **macOS / Linux:**
 ```bash
@@ -27,129 +20,54 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ```powershell
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
-*(Reinicia tu terminal después de la instalación para que reconozca el comando).*
+
+*(Reinicia tu terminal después de instalar).*
 
 ---
 
-## 🚀 2. Clonación y Puesta en Marcha
+## 🚀 2. Inicialización Rápida
 
-1. **Clona el repositorio** en tu computadora local:
+1. **Clona tu nuevo repositorio** y abre la carpeta en la terminal.
+2. *(Opcional)* Abre `pyproject.toml` y cambia `name = "dl-project"` por el nombre real de tu proyecto.
+3. **Instala todo automáticamente:**
    ```bash
-   git clone <url-de-tu-repositorio>
-   cd <nombre-del-repo>
+   uv sync
    ```
-2. **Inicializa y configura tu proyecto (SOLO LA PRIMERA VEZ):**
-   Ejecuta el script de configuración incluido. Este script te preguntará el nombre de tu proyecto, preparará todo y **se auto-eliminará** al terminar.
-   ```bash
-   uv run init.py
-   ```
-   > 💡 **¡ATENCIÓN! Futuras clonaciones:** 
-   > Una vez inicializado, el archivo `init.py` dejará de existir. Si otro desarrollador clona tu repositorio, o si tú necesitas actualizar las dependencias más adelante, **simplemente debes correr:**
-   > ```bash
-   > uv sync
-   > ```
-   
-   Durante este proceso, si estás en Windows, `uv` descargará automáticamente la versión de PyTorch con **CUDA 13.2**. Si estás en Mac, descargará la versión nativa con soporte para **MPS**.
-3. **Verifica que el hardware se detecte correctamente:**
-   ```bash
-   uv run run_model
-   ```
+   > Esto creará la carpeta `.venv` y descargará PyTorch con soporte para GPU automáticamente (CUDA para Windows, MPS para Mac).
 
 ---
 
-## 📁 3. Estructura del Proyecto
+## 📁 3. Estructura Principal
 
-Esta plantilla sigue las mejores prácticas arquitectónicas para Deep Learning. El repositorio está diseñado para que **nunca subas datos pesados por accidente a GitHub**, siempre y cuando pongas cada archivo en las carpetas correspondientes.
-
-```text
-<nombre-del-repo>/
-│
-├── 📄 main.py             <- 🚀 PUNTO DE ENTRADA. Escribe aquí tu programa principal.
-│
-├── 📂 data/               <- 🛑 IGNORADO POR GIT.
-│   │                         Pon aquí tus datasets, imágenes, CSVs o bases de datos en crudo.
-│   │                         (Ej: data/train_images/, data/labels.csv)
-│   
-├── 📂 checkpoints/        <- 🛑 IGNORADO POR GIT.
-│   │                         Usa esta carpeta para guardar los pesos de tu modelo mientras entrena.
-│   │                         (Ej: checkpoints/modelo_epoch_10.pt, modelo_final.safetensors)
-│   
-├── 📂 notebooks/          <- 💡 Jupyter Notebooks para Análisis Exploratorio (EDA).
-│   │                         Ideal para visualizar gráficas, probar transformaciones o 
-│   │                         hacer prototipos rápidos antes de pasarlos a producción.
-│   
-├── 📂 src/core/           <- 💻 MÓDULOS Y LIBRERÍAS.
-│   │                         Aquí van los códigos, clases y funciones (como chequeo de GPU,
-│   │                         arquitectura del modelo, etc.) que hacen funcionar a main.py.
-│   │
-│   ├── check_gpu.py       <- Clase global para inicializar y auto-detectar el dispositivo (MPS/CUDA/CPU).
-│   └── __init__.py        
-│
-├── 📂 tests/              <- 🧪 PRUEBAS UNITARIAS (Pytest).
-│   │                         Asegura que tu código funcione y no se rompa al escalarlo.
-│
-├── 📄 AGENTS.md           <- Reglas, estilo de código y directrices de IA para agentes automatizados.
-├── 📄 pyproject.toml      <- Configuración maestra del proyecto, dependencias y reglas de linter (Ruff).
-└── 📄 uv.lock             <- Archivo generado automáticamente por `uv` (no editar manualmente).
-```
+- `main.py` -> Tu punto de entrada. Escribe tu código aquí.
+- `data/` -> Para datasets y CSVs en crudo *(Ignorado por Git)*.
+- `checkpoints/` -> Para guardar los pesos `.pt` de tus modelos *(Ignorado por Git)*.
+- `notebooks/` -> Para experimentación y análisis (Jupyter).
+- `src/core/` -> Carpeta base para tus módulos (arquitecturas, utils, etc).
 
 ---
 
-## 🛠️ 4. Automatización con VSCode
+## 🛠️ 4. VS Code (Opcional)
 
-Si usas **Visual Studio Code**, el proyecto ya viene pre-configurado para ti.
-1. Al abrir la carpeta en VSCode, dale click en **"Instalar extensiones recomendadas"** (Python, Pylance, Ruff).
-2. El editor detectará el entorno virtual (`.venv`) automáticamente.
-3. El código se formateará de manera automática (`formatOnSave`) y respetará el mantenimiento de tus librerías gracias a la configuración de `settings.json`.
+- Cuando abras el proyecto, acepta **"Instalar extensiones recomendadas"** (Python, Ruff, Jupyter, etc).
+- Tendrás un entorno altamente productivo y con autocompletado inteligente gracias a Pylance.
 
 ---
 
-## � 5. Librerías Incluidas por Defecto
+## 📋 5. Comandos Útiles (`uv`)
 
-Esta plantilla viene lista para producción del ecosistema de Deep Learning preinstalado en sus versiones más modernas y estables:
-
-- 🔥 **PyTorch (`torch`, `torchvision`)**: El motor principal con aceleración GPU garantizada (NVIDIA CUDA / Apple MPS).
-- 🧮 **Numpy & Pandas**: Para cálculos matriciales y manipulación de datasets tabulares.
-- 📊 **Matplotlib**: Para graficar imágenes, métricas y curvas de aprendizaje (Loss/Accuracy).
-- 🧠 **Scikit-learn**: Herramientas analíticas y métricas clásicas de Machine Learning.
-- ⏳ **Tqdm**: Para renderizar barras de progreso elegantes en la consola durante tus entrenamientos.
-- 🏗️ **Torchinfo**: Para imprimir resúmenes arquitectónicos detallados (capas, tensores y parámetros) de tus redes neuronales.
-- 🛠️ **Dev Tools (`pytest`, `ruff`)**: Infraestructura para correr pruebas unitarias y mantener tu código formateado impecablemente.
+- **Instalar nueva librería:** `uv add nombre-paquete` (ej. `uv add seaborn`)
+- **Ver librerías instaladas:** `uv pip list`
+- **Actualizar todo a la última versión:** `uv lock --upgrade && uv sync`
 
 ---
 
-## 📋 6. Comandos Útiles (`uv` Cheatsheet)
+## 🐍 6. Cambiar la versión de Python
 
-Como este proyecto usa `uv` en lugar de `pip` convencional, aquí tienes los comandos que más vas a usar en tu día a día para gestionar tus librerías:
+Si necesitas que tu proyecto corra con otra versión de Python (por ejemplo, bajar a `3.11`):
 
-### ➕ Agregar librerías manualmente
-Si necesitas una nueva librería (ej. `seaborn`), no edites el archivo `pyproject.toml` a mano. Usa:
-```bash
-uv add seaborn
-```
-*Esto la descarga, actualiza el `pyproject.toml` y sincroniza el entorno virtual automáticamente.*
+1. **Consulta las versiones disponibles** ejecutando: `uv python list`
+2. **Abre el archivo** `.python-version` y cambia el número a la versión exacta que deseas (ej. `3.11`).
+3. **Sincroniza el entorno:** Vuelve a ejecutar `uv sync`.
 
-### 🔍 Revisar qué tienes instalado
-Para ver una lista de todas las librerías instaladas y sus versiones actuales:
-```bash
-uv pip list
-```
-*(Tip Pro: Si quieres ver cómo dependen unas librerías de otras en forma de árbol, usa `uv pip tree`)*.
-
-### 🔄 Actualizar versiones
-Si pasaron meses y quieres que `uv` busque las versiones más nuevas de todas tus librerías respetando los límites del `pyproject.toml`:
-```bash
-uv lock --upgrade
-uv sync
-```
-*Si solo quieres actualizar una en específico (ej. PyTorch):* `uv add torch --upgrade`
-
-### 🚀 Correr cualquier script
-Siempre procura correr tus scripts de Python a través de `uv` para que inyecte el entorno virtual automáticamente sin que tengas que activarlo manualmente:
-```bash
-uv run main.py
-```
-
----
-
-¡Feliz entrenamiento! 🧠🔥
+> `uv` se encargará de descargar esa versión de Python automáticamente (si no la tienes) y recreará tu entorno `.venv` utilizando la nueva versión, todo de forma transparente.

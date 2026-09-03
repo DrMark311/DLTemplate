@@ -3,7 +3,9 @@
         "ms-python.python",
         "ms-python.vscode-pylance",
         "charliermarsh.ruff",
-        "tamasfe.even-better-toml"
+        "tamasfe.even-better-toml",
+        "ms-toolsai.jupyter",
+        "mechatroner.rainbow-csv",
+        "njpwerner.autodocstring"
     ]
 }
-
