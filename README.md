@@ -41,7 +41,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 
 - `main.py` -> Tu punto de entrada. Escribe tu código aquí.
 - `data/` -> Para datasets y CSVs en crudo *(Ignorado por Git)*.
-- `checkpoints/` -> Para guardar los pesos `.pt` de tus modelos *(Ignorado por Git)*.
+- `checkpoints/` -> Para guardar los pesos y modelos *(Ignorado por Git)*.
 - `notebooks/` -> Para experimentación y análisis (Jupyter).
 - `src/core/` -> Carpeta base para tus módulos (arquitecturas, utils, etc).
 
